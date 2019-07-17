@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Main</title>
+</head>
+<style>
+    form {
+        width: 800px;
+        height: 400px;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+    }
+    p {
+        display: flex;
+    }
+    label {
+        width: 140px;
+    }
+    select {
+        width: 175px;
+    }
+    .validation {
+        visibility: hidden;
+        color: red;
+    }
+    textarea {
+        width: 310px;
+    }
+</style>
+<body>
+<form action="#" method="post" name = "my_form">
+    <p>
+        <label>От кого: </label>
+        <input class="input" type="text" name="from" id="from">
+        <label class="validation"> Укажите от кого.</label>
+    </p>
+   <p>
+       <label >Ваш пароль: </label>
+       <input class="input" type="password" name="pass" id="pass">
+       <label class="validation"> Укажите от пароль.</label>
+   </p>
+    <p>
+        <label>Повторите пароль: </label>
+        <input class="input" type="password" name="repeat_pass" id="repeat_pass">
+        <label class="validation"> Пароль не совпадает.</label>
+    </p>
+    <p>
+        <label>Куда: </label>
+        <select  name="destination" id="destination">
+            <option>Отдел Снабжения</option>
+            <option>Отдел Кадров</option>
+            <option>Отдел Логистики</option>
+        </select>
+        <label class="validation"></label>
+    </p>
+    <label for="text_area">Сообщение: </label>
+    <textarea id="text_area" cols="20" rows="10"></textarea>
+    <label class="validation"> Отсутсвует текст.</label>
+    <p>
+        <input type="submit" value="Проверить" id="btn">
+    </p>
+</form>
+
+<script>
+    let btn = document.querySelector[my_form].btn.addEventListener('click', ()=> {
+        let inputs = document.querySelector.input;
+        for(let i = 0 ; i < inputs.length; i++) {
+            inputs[i].trim();
+            if (inputs[i].innerHTML == null )
+            {
+                inputs[i].style.visibility = 'unset';
+            }
+
+        }
+    });
+</script>
+</body>
+</html>
