@@ -22,8 +22,11 @@
         width: 175px;
     }
     .validation {
-        visibility: hidden;
         color: red;
+    }
+
+    .hidden {
+        visibility: hidden;
     }
     textarea {
         width: 310px;
@@ -34,17 +37,17 @@
     <p>
         <label>От кого: </label>
         <input class="input" type="text" name="from" id="from">
-        <label class="validation"> Укажите от кого.</label>
+        <label class="validation hidden"> Укажите от кого.</label>
     </p>
    <p>
        <label >Ваш пароль: </label>
        <input class="input" type="password" name="pass" id="pass">
-       <label class="validation"> Укажите от пароль.</label>
+       <label class="validation hidden"> Укажите от пароль.</label>
    </p>
     <p>
         <label>Повторите пароль: </label>
         <input class="input" type="password" name="repeat_pass" id="repeat_pass">
-        <label class="validation"> Пароль не совпадает.</label>
+        <label class="validation hidden"> Пароль не совпадает.</label>
     </p>
     <p>
         <label>Куда: </label>
@@ -53,27 +56,29 @@
             <option>Отдел Кадров</option>
             <option>Отдел Логистики</option>
         </select>
-        <label class="validation"></label>
+        <label class="validation hidden"></label>
     </p>
     <label for="text_area">Сообщение: </label>
     <textarea id="text_area" cols="20" rows="10"></textarea>
-    <label class="validation"> Отсутсвует текст.</label>
+    <label class="validation hidden"> Отсутсвует текст.</label>
     <p>
         <input type="submit" value="Проверить" id="btn">
     </p>
 </form>
 
 <script>
-    let btn = document.querySelector[my_form].btn.addEventListener('click', ()=> {
-        let inputs = document.querySelector.input;
-        for(let i = 0 ; i < inputs.length; i++) {
-            inputs[i].trim();
-            if (inputs[i].innerHTML == null )
-            {
-                inputs[i].style.visibility = 'unset';
-            }
+    let btn = document.forms['my_form'].btn.addEventListener('click', ()=> {
+        event.preventDefault();
 
-        }
+        for(let item of document.forms['my_form'].elements)
+        {
+            if (item.value == '' )
+            {
+                document.querySelector(`#${item.getAttribute('id')}+.validation`).classList.remove('hidden');
+            } else {
+                document.querySelector(`#${item.getAttribute('id')}+.validation`).classList.add('hidden');
+            }
+        }  
     });
 </script>
 </body>
